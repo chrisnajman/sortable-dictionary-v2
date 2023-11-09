@@ -1,0 +1,127 @@
+:root {
+    --font-sans: sans-serif;
+    --font-serif: Georgia, serif;
+    --horz-center: 0 auto;
+    --flex: flex;
+
+    /** Colours **/
+    --clr-none: transparent;
+    --clr-lightest: white;
+    --clr-pale-grey: rgb(245, 245, 250);
+    --clr-pale-blue: rgb(187, 229, 245);
+    --clr-blue: rgb(83, 104, 223);
+    --clr-darkest-blue: rgb(9, 9, 70);
+    --clr-grey-light: rgb(226, 225, 225);
+    --clr-grey-neutral-dark: rgb(48, 48, 48); /* thead tr */
+    --clr-grey-neutral-darkest: rgb(33, 33, 33); /* body table all rows */
+    --clr-black: rgb(0, 0, 0);
+    --clr-warning: red;
+
+    /** Named vars **/
+    /* Constants */
+    --focus: var(--clr-pale-blue);
+    --bg-darkest: var(--clr-darkest-blue);
+    --text-lightest: var(--clr-lightest);
+    --theme-icon: var(--clr-grey-light);
+
+    /** Light theme */
+    --link: var(--clr-lightest);
+    --header-footer-bg: var(--clr-darkest-blue);
+    --body-bg: var(--clr-pale-grey);
+    --text: var(--clr-darkest-blue);
+
+    /** Skip Link **/
+    --skip-link-bg: var(--clr-blue);
+    --skip-link-text: var(--clr-lightest);
+
+    /** .button */
+    --class-button-bg: var(--clr-lightest);
+    --class-button-border: var(--clr-darkest-blue);
+    --class-button-text: var(--clr-darkest-blue);
+
+    /* form*/
+    --form-bg: var(--clr-pale-grey);
+    --form-text: var(--clr-darkest-blue);
+    --form-field-bg: var(--clr-lightest);
+    --form-button-bg: var(--clr-blue);
+    --form-button-text: var(--clr-lightest);
+    --form-border: var(--clr-darkest-blue);
+
+    /* theme button */
+    --theme-icon-bg: var(--clr-blue);
+    --theme-text: var(--clr-lightest);
+
+    /** Page header */
+    --header-button-bg: var(--clr-lightest);
+    --header-button-text: var(--clr-darkest-blue);
+
+    /** table */
+    /* thead */
+    --thead-tr: var(--bg-darkest);
+    --th-border-right: var(--clr-lightest);
+    --th-border-bottom: var(--clr-none);
+    --th-text: var(--clr-lightest);
+
+    /* tbody */
+    --tr-highlight-newest: var(--clr-pale-grey);
+    --tr-odd-bg: var(--clr-lightest);
+    --tr-even-bg: var(--clr-pale-grey);
+    --tr-odd-td-border-right: var(--clr-pale-grey);
+    --tr-even-td-border-right: var(--clr-lightest);
+    --tr-border-bottom: var(--clr-none);
+    --td-text: var(--clr-darkest-blue);
+    --content-editable-bg: var(--clr-darkest-blue);
+    --content-editable-text: var(--clr-lightest);
+    --content-editable-border: var(--clr-blue);
+}
+
+.dark-theme {
+    --link: var(--clr-pale-blue);
+    --header-footer-bg: var(--clr-grey-neutral-darkest);
+    --body-bg: var(--clr-black);
+    --text: var(--clr-grey-light);
+
+    /** Skip Link **/
+    --skip-link-bg: var(--clr-black);
+    --skip-link-text: var(--clr-pale-blue);
+
+    /* form */
+    --form-bg: var(--clr-grey-neutral-dark);
+    --form-text: var(--clr-grey-light);
+    --form-field-bg: var(--clr-grey-neutral-darkest);
+    --form-button-bg: var(--clr-grey-neutral-darkest);
+    --form-button-text: var(--clr-pale-blue);
+    --form-border: var(--clr-black);
+
+    /* theme button */
+    --theme-icon-bg: var(--clr-black);
+    --theme-text: var(--clr-pale-blue);
+
+    /** .button */
+    --class-button-bg: var(--clr-none);
+    --class-button-border: var(--clr-none);
+    --class-button-text: var(--clr-pale-blue);
+
+    /** Page header */
+    --header-button-bg: var(--clr-black);
+    --header-button-text: var(--clr-pale-blue);
+
+    /** table */
+    --table-text: ;
+    /* thead */
+    --thead-tr: var(--clr-grey-neutral-dark);
+    --th-border-right: var(--clr-black);
+    --th-border-bottom: var(--clr-black);
+    --th-text: var(--clr-grey-light);
+    /* tbody */
+    --tr-highlight-newest: var(--clr-grey-neutral-dark);
+    --tr-odd-bg: var(--clr-grey-neutral-darkest);
+    --tr-even-bg: var(--clr-grey-neutral-darkest);
+    --tr-odd-td-border-right: var(--clr-black);
+    --tr-even-td-border-right: var(--clr-black);
+    --tr-border-bottom: var(--clr-black);
+    --td-text: var(--clr-grey-light);
+    --content-editable-bg: var(--clr-black);
+    --content-editable-text: var(--clr-grey-light);
+    --content-editable-border: var(--clr-pale-blue);
+}

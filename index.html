@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="description" content="Create your own sortable dictionary by adding, editing and deleting table rows.">
+    <title>Sortable Dictionary V.2</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <a href="#main-content" class="element-invisible element-focusable skip-link">Skip to main content</a>
+    <form id="theme-picker" class="theme-picker">
+        <button type="button" id="btn-theme-toggle" class="btn-theme-toggle" aria-pressed>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon icon-sun" aria-hidden="true"
+                id="theme-sun">
+                <path
+                    d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z">
+                </path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon icon-moon hide"
+                aria-hidden="true" id="theme-moon">
+                <path
+                    d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z">
+                </path>
+            </svg>
+            Dark Mode
+            <span class="btn-theme-state" aria-hidden="true"></span></button>
+    </form>
+    <div class="page-layout">
+        <header class="page-header">
+            <img src="./img/dictionary.png" width="32" height="32" alt="">
+            <h1>
+                <button id="launch-modal">
+                    <span>Dictionary: add entry </span><span aria-hidden="true" class="plus">+</span>
+                </button>
+            </h1>
+            <dialog id="modal" class="modal">
+                <form class="entries-form" id="entries-form">
+                    <div class="word-phrase">
+                        <label for="term" class="term">Word / phrase (<span class="warning">required</span>)</label>
+                        <p class="info">Hyphens, single apostrophes (') and all accents allowed. No special
+                            characters, e.g. &commat;, &pound;, etc.
+                        </p>
+                        <input type="text" id="term" pattern="^[a-zA-Z,.,'\-\s\p{L}]+" required autofocus>
+                    </div>
+                    <div>
+                        <label for="definition">Definition </label>
+                        <textarea id="definition" rows="5" cols="50"></textarea>
+                    </div>
+                    <div>
+                        <label for="language-select">Choose language</label>
+                        <p class="info">If language is not specified, choose "Other".</p>
+                        <select id="language-select" name="language-select" data-language-select>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                            <option value="la">Latin</option>
+                            <option value="es">Spanish</option>
+                            <option value="und">Other</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button class="button">Submit</button>
+                        <button class="button" type="button" id="cancel">Cancel</button>
+                    </div>
+                </form>
+            </dialog>
+        </header>
+        <main class="main" id="main-content">
+            <div role="region" aria-labelledby="sortableDictionary" tabindex="0">
+                <table class="table scroll-child">
+                    <caption id="sortableDictionary" class="visually-hidden">Sortable Dictionary</caption>
+                    <thead id="table-head" class="thead">
+                        <tr>
+                            <th class="heading-word">
+                                <div>
+                                    <span>Word / phrase</span>
+                                    <div class="sort-buttons">
+                                        <button id="btn-sort-words-a-z" class="sort-button" disabled>
+                                            <span class="visually-hidden">Sort word/phrase A-Z</span>
+                                            <img src="./img/sort-a-z.svg" width="24" alt="Sort word/phrase A-Z">
+                                        </button>
+                                        <button id="btn-sort-words-z-a" class="sort-button" disabled>
+                                            <span class="visually-hidden">Sort word/phrase Z-A</span>
+                                            <img src="./img/sort-z-a.svg" width="24" alt="Sort word/phrase Z-A">
+                                        </button>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="heading-definition">
+                                <div><span>Definition</span></div>
+                            </th>
+                            <th class="heading-language">
+                                <div>
+                                    <span>Language</span>
+                                    <div class="sort-buttons">
+                                        <button id="btn-sort-languages-a-z" class="sort-button" disabled>
+                                            <span class="visually-hidden">Sort language A-Z</span>
+                                            <img src="./img/sort-a-z.svg" width="24" alt="Sort language A-Z">
+                                        </button>
+                                        <button id="btn-sort-languages-z-a" class="sort-button" disabled>
+                                            <span class="visually-hidden">Sort languageZ-A</span>
+                                            <img src="./img/sort-z-a.svg" width="24" alt="Sort language A-Z">
+                                        </button>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="heading-delete">
+                                <div>
+                                    <span class="visually-hidden">Delete row</span>
+                                    <img src="./img/close.svg" width="36" alt="Delete row">
+                                </div>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="tbody"></tbody>
+                </table>
+            </div>
+        </main>
+        <footer class="page-footer">
+            <a href="https://github.com/chrisnajman/sortable-dictionary-v2" target="_blank" rel="noopener noreferrer">
+                Documentation (GitHub Repository)
+            </a>
+        </footer>
+    </div>
+    <template id="table-row-template">
+        <tr class="table-row">
+            <td class="word-cell">
+                <p data-term lang="en" class="serif"></p>
+            </td>
+            <td class="definition-cell">
+                <div>
+                    <p data-def class="serif"></p>
+                    <button data-edit-word class="btn-edit button">Edit</button>
+                </div>
+            </td>
+            <td class="language-cell">
+                <div>
+                    <p data-lang class="serif"></p>
+                </div>
+            </td>
+            <td class="delete-row">
+                <div><button data-delete-row class="button">Delete</button></div>
+            </td>
+        </tr>
+    </template>
+</body>
+
+</html>

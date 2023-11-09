@@ -1,0 +1,41 @@
+/** Dark mode button */
+.theme-picker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 50;
+    width: fit-content;
+}
+
+.theme-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: var(--theme-icon);
+    margin-right: 0.5rem;
+}
+
+.btn-theme-toggle {
+    display: var(--flex);
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0 0 0 0.75rem;
+    border-radius: 0 0 0 0.8rem;
+    background-color: var(--theme-icon-bg);
+    color: var(--theme-text);
+    font-size: clamp(1.2rem, 1.1rem + 0.4444vw, 1.6rem);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+[aria-pressed] .icon-moon {
+    fill: var(--theme-icon);
+}
+
+[aria-pressed="false"] .btn-theme-state::after {
+    content: ": off";
+}
+[aria-pressed="true"] .btn-theme-state::after {
+    content: ": on";
+}

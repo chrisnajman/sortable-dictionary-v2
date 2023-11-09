@@ -1,0 +1,183 @@
+.table {
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: var(--horz-center);
+    width: 100%;
+    min-width: 73.6rem; /* Fits Ipad Mini: At viewport width 768px, no scrollbars on table container */
+    max-width: 120rem;
+    font-size: clamp(1.6rem, 1.4512rem + 0.3101vw, 1.8rem);
+}
+
+.thead {
+    & tr {
+        background-color: var(--thead-tr);
+        color: var(--th-text);
+    }
+
+    & th {
+        border-width: 0 2px 2px 0;
+        border-style: solid;
+        border-color: var(--th-border-right);
+        border-bottom: (--th-border-bottom);
+        padding: 1.6rem 1rem;
+
+        &:last-child {
+            border-right: 0;
+        }
+
+        & > div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (width <= 1040px) {
+                flex-direction: column;
+            }
+        }
+    }
+
+    & .sort-buttons {
+        display: var(--flex);
+        gap: 1rem;
+        justify-content: center;
+        padding-block-start: 0.5rem;
+
+        & button {
+            padding: 0.5rem;
+            outline: 1px solid var(--clr-grey-light);
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &[disabled] {
+                background-color: grey;
+                cursor: default;
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        & img {
+            min-width: 2.4rem;
+        }
+    }
+
+    & .heading-word {
+        width: 30%;
+    }
+    & .heading-definition {
+        width: 40%;
+    }
+    & .heading-language {
+        width: 20%;
+    }
+    & .heading-delete {
+        width: 10%;
+
+        & img {
+            width: 40%;
+            margin: var(--horz-center);
+            padding: 0;
+            display: block;
+        }
+    }
+
+    /* Hack: stops overflow showing in device view */
+    & .visually-hidden {
+        top: -10000px;
+        left: -10000px;
+    }
+}
+
+.tbody {
+    & tr {
+        border-bottom: 2px solid var(--tr-border-bottom);
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    & tr:nth-child(odd) {
+        background-color: var(--tr-odd-bg);
+    }
+    & tr:nth-child(even) {
+        background-color: var(--tr-even-bg);
+    }
+    & tr:nth-child(odd) td {
+        border-right-color: var(--tr-odd-td-border-right);
+    }
+    & tr:nth-child(even) td {
+        border-right-color: var(--tr-even-td-border-right);
+    }
+
+    & td {
+        color: var(--td-text);
+        border-right-width: 2px;
+        border-right-style: solid;
+        vertical-align: top;
+        padding: 0.5rem 0;
+
+        &:last-child {
+            border-right: 0;
+        }
+
+        & > * {
+            display: var(--flex);
+            flex-wrap: wrap;
+            gap: 3rem;
+            padding: 1.6rem;
+            align-items: center;
+            justify-content: center;
+
+            &:has(p) {
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    & .button {
+        padding-block-start: 0;
+        padding-block-end: 0;
+    }
+
+    & .word-cell p,
+    & .language-cell p {
+        justify-content: flex-start;
+    }
+
+    & .language-cell button,
+    & .definition-cell button {
+        margin-left: auto;
+    }
+
+    & p {
+        max-width: 40ch;
+        overflow-x: auto;
+
+        &[contenteditable] {
+            background-color: var(--content-editable-bg);
+            outline: 1px dotted var(--content-editable-border);
+            color: var(--content-editable-text);
+            padding: 0.25rem;
+            cursor: default;
+            width: 100%;
+        }
+    }
+
+    & tr.latest-entry {
+        animation: highlight 1.5s ease-in-out;
+    }
+}
+@keyframes highlight {
+    0% {
+        background-color: var(--tr-highlight-newest);
+    }
+    100% {
+        background-color: var(--tr-odd-bg);
+    }
+}

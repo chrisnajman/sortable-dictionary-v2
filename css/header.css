@@ -1,0 +1,29 @@
+.page-header {
+    & img {
+        margin: 0 auto;
+    }
+    & h1 {
+        max-width: 48rem;
+        margin: var(--horz-center);
+        font-weight: 400;
+
+        & .plus {
+            position: relative;
+            top: 0.2rem;
+        }
+
+        & button {
+            display: var(--flex);
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.6rem 0.8rem 2.5rem;
+            border-radius: 3.2rem;
+            background-color: var(--header-button-bg);
+            color: var(--header-button-text);
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}

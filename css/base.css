@@ -1,0 +1,195 @@
+*,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    /* 
+        This allows easily setting any/all dimension in rems, 
+        e.g. width: 30rem === width: 300px 
+    */
+    font-size: 10px;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--body-bg);
+    font-family: var(--font-sans);
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
+
+h1 {
+    font-size: clamp(1.6rem, 1.1739rem + 2.4348vw, 3rem);
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle; /* replaces display: block but also removes space below */
+    font-style: italic;
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+}
+
+button {
+    all: unset;
+    color: inherit;
+    cursor: pointer;
+}
+
+button,
+input[type="text"],
+textarea,
+select {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.button {
+    color: var(--class-button-text);
+    background-color: var(--class-button-bg);
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--class-button-border);
+    border-radius: 0.3rem;
+}
+.button:hover {
+    opacity: 0.7;
+}
+
+.page-layout {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: var(--flex);
+    flex-direction: column;
+    align-items: stretch;
+}
+
+header,
+main,
+footer {
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.page-header {
+    padding: 1.6rem 1.6rem 3.2rem 1.6rem;
+}
+
+.main,
+.page-footer {
+    padding: 5rem 1.6rem;
+}
+
+.page-header,
+.page-footer {
+    background-color: var(--header-footer-bg);
+    color: var(--text-lightest);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.page-footer a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+.page-footer a::after {
+    content: " \27F6";
+}
+
+/** Helpers */
+/* Scrollable container for tables */
+[role="region"][aria-labelledby][tabindex] {
+    overflow: auto;
+}
+
+/* Skip link */
+.skip-link {
+    background-color: var(--skip-link-bg);
+    color: var(--skip-link-text);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 0 0 0.8rem 0;
+}
+.element-invisible {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.element-invisible.element-focusable:active,
+.element-invisible.element-focusable:focus {
+    clip: auto;
+    height: auto;
+    overflow: visible;
+}
+/* Screenreader only */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(0);
+    border: 0;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html,
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0ms !important;
+    }
+}
+
+.info {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.warning {
+    color: var(--clr-warning);
+}
+
+.serif {
+    font-family: var(--font-serif);
+}
+/* Always comes last **/
+.hide {
+    display: none;
+}
