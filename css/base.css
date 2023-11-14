@@ -73,19 +73,13 @@ select {
 .page-layout {
     min-height: 100vh;
     min-height: 100dvh;
-    display: var(--flex);
-    flex-direction: column;
-    align-items: stretch;
+    display: var(--grid);
+    grid-template-rows: auto 1fr auto;
 }
 
-header,
-main,
-footer {
-    flex-shrink: 0;
-}
-
+/* Fixes table container overflow bug when using grid page layout */
 main {
-    flex-grow: 1;
+    overflow: hidden;
 }
 
 .page-header {

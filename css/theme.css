@@ -3,6 +3,7 @@
     --font-serif: Georgia, serif;
     --horz-center: 0 auto;
     --flex: flex;
+    --grid: grid;
 
     /** Colours **/
     --clr-none: transparent;
