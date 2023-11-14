@@ -52,7 +52,8 @@ Deleted entries are also deleted from local storage.
 
 ## CSS
 
-- `flexbox` used for page layout and page elements.
+- `grid` used for page layout.
+- `flexbox` used for page elements.
 - Files are organised using `@import` to pull modules into `style.css`.
 - Files are organised internally using CSS nesting.
 - Responsive (as far as a data table can be responsive).
